@@ -11,14 +11,14 @@ docker build -t kunbus-kernel-build .
 ## example usage
 
 ```
-VERSION=5.10
-FLAVOR=devel
+VERSION="5.10"
+PREFIX="devel/"
 
 mkdir build
 
-git clone https://github.com/RevolutionPi/kernelbakery -b ${FLAVOR}/${VERSION} --depth 1 --single-branch build/kernelbakery
-git clone https://github.com/RevolutionPi/piControl -b ${FLAVOR}/revpi-${VERSION} --depth 1 --single-branch build/piControl
-git clone -b ${FLAVOR}/revpi-${VERSION} https://github.com/RevolutionPi/linux --depth 1 --single-branch build/linux
+git clone https://github.com/RevolutionPi/kernelbakery -b ${PREFIX}${VERSION} --depth 1 --single-branch build/kernelbakery
+git clone https://github.com/RevolutionPi/piControl -b ${PREFIX}/revpi-${VERSION} --depth 1 --single-branch build/piControl
+git clone https://github.com/RevolutionPi/linux -b ${PREFIX}revpi-${VERSION}  --depth 1 --single-branch build/linux
 
 docker run -it --rm \
 	-v $(PWD)/build:/build \
